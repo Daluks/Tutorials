@@ -56,7 +56,7 @@ In the app module we add declaration of our Component
 communication between business logic(typescript) and template(html)
 
 * String interpolation ``{{data}})``
-* Propertuy binding ``[property]="data"``
+* Property binding ``[property]="data"``
 * Event Binding ``(event)="expression"``
 * combination of both (Two-way-binding) ``[(ngModel)]="data"``
 
@@ -78,3 +78,48 @@ Do the binding on the html
 ``allowNewServer = false;``
 
 ``<button class="btn btn-primary" [disabled]="allowNewServer">``
+
+#### Event Binding
+
+* Part 1 OnClick and setting the value
+
+``  onCreateServer(){
+    this.servetrCreationStatus = 'server Created';
+  }``
+
+`` <button class="btn btn-primary" [disabled]="allowNewServer"(click)="onCreateServer()">Add server</button>``
+
+* part 2 - On the input Updating and sending the value.
+
+``
+onUpdateServerName(event: any){
+    this.serverName = (<HTMLInputElement>event.target).value;
+  }
+``
+
+``
+<input type="text" class="form-control" (input)="onUpdateServerName($event)">
+``
+#### Two-Way Binding
+
+``<input type="text" class="form-control" [(ngModel)]="serverName"> ``
+
+``<p>{{serverName}}</p>``
+
+### Directives
+
+Instructions in the DOM
+
+#### ngIf with else usage (Structural Directives)
+
+* Structural directive add or remove elements
+
+``<ng-template #noServer><p>NoServer was created</p></ng-template>``
+
+``<p *ngIf="serverCreated; else noServer">Server was created {{serverName}}</p>``
+
+#### ngStyle (Attribute Directive, without a *)
+
+* Attribute Directives are without a ``*``. They look like normal html attributes. They only change the element that they are placed on.
+
+``<p [ngStyle]="{backgroundColor: getColor()}">{{'server'}} with id {{serverId}} is {{serverStatus}}</p>``
