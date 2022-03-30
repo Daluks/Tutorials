@@ -7,7 +7,7 @@
 
 ### Angular Install and Setup
 
-`` npm config set proxy=http://qxz2moc:DaluksLesegoMorenaBontle@proxy.w9:80 ``
+`` npm config set proxy=http://user:password@proxyAdress:portNumer ``
 
 `` npm install @angular/cli``
 
